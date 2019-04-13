@@ -3,6 +3,10 @@ package tree;
 public class BSTree<T extends Comparable<T>>{
 	private TreeNode<T> root;
 	
+	public TreeNode<T> get_root(){
+		return this.root;
+	}
+	
 	public TreeNode<T> search(T val) {
 		TreeNode<T> current = this.root;
 		while (val != current.data && current != null) {
