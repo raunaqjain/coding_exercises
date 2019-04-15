@@ -1,18 +1,8 @@
 package stack;
 
-class Node<T>{
-	T data;
-	Node<T> next;
-	
-	public Node(T data) {
-		this.data = data;
-		this.next = null;
-	}
-}
-
 public class Stack<T> {
-	private Node<T> head;
-	private int size;
+	Node<T> head;
+	int size;
 	
 	public Stack() {
 		this.head = null;
@@ -23,18 +13,18 @@ public class Stack<T> {
 		return this.size;
 	}
 	public boolean is_empty() {
-		return this.size == 0;
+		return this.head == null;
 	}
 	
 	public void push(T data) {
+		Node<T> temp = new Node<T>(data);
+		this.size++;
 		if (this.is_empty()) {
-			this.head = new Node<T>(data);
+			this.head = temp;
 		} 
 		else {
-			Node<T> temp = new Node<T>(data);
 			temp.next = this.head;
-			temp = this.head;
-			this.size++;
+			this.head = temp;
 		}
 	}
 	
@@ -49,6 +39,22 @@ public class Stack<T> {
 			this.size--;
 			return temp.data;
 		}
+	}
+	
+	public void display() {
+		Node<T> temp = this.head;
+		for(int i=0; i < this.get_size(); i++) {
+			System.out.printf("%d ", temp.data);
+			temp = temp.next;
+		}
+	}
+	
+	public static void main(String[] args) {
+		Stack<Integer> s = new Stack<Integer>();
+		int[] a = {5,4,3,2,1};
+		for (int i=0; i < a.length; i++) 
+			s.push(a[i]);
+		s.display();
 	}
 
 }
