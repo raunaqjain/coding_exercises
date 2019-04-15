@@ -1,15 +1,5 @@
 package queue;
 
-class Node<T>{
-	T data;
-	Node<T> next;
-	
-	public Node(T data){
-		this.data = data;
-		this.next = null;
-	}
-}
-
 public class Queue<T> {
 	int size;
 	Node<T> front, rear;
